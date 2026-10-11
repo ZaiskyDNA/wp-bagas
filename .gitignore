@@ -1,0 +1,27 @@
+# Rahasia
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+
+# Ekspor / backup
+*.wpress
+*.sql
+*.sql.gz
+backups/
+
+# Gambar sumber (PNG/JPG dari AI generator); yang di-commit hanya WebP + og-image.jpg
+content/images/*.png
+content/images/*.jpg
+content/images/*.jpeg
+!content/images/og-image.jpg
+
+# Sistem / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+node_modules/
