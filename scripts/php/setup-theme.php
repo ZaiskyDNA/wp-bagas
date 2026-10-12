@@ -152,6 +152,14 @@ $mods = array(
 		'blur' => 0, 'spread' => 0, 'inset' => false, 'disabled' => true,
 	),
 
+	// --- Header HTML module: link Masuk/Akun (shortcode [bagus_account]) ---
+	'header_html_content'    => '[bagus_account]',
+	'header_html_link_style' => 'plain',
+	'header_html_wpautop'    => false,
+	'mobile_html_content'    => '[bagus_account]',
+	'mobile_html_link_style' => 'plain',
+	'mobile_html_wpautop'    => false,
+
 	// --- Breadcrumb ---
 	'breadcrumb_engine' => 'default',
 
@@ -179,9 +187,9 @@ $mods = array(
 		'main'   => array(
 			'main_left'         => array( 'logo' ),
 			'main_left_center'  => array(),
-			'main_center'       => array(),
-			'main_right_center' => array( 'navigation' ),
-			'main_right'        => array( 'search', 'cart' ),
+			'main_center'       => array( 'navigation' ),
+			'main_right_center' => array(),
+			'main_right'        => array( 'html', 'search', 'cart' ),
 		),
 		'bottom' => array(
 			'bottom_left' => array(), 'bottom_left_center' => array(), 'bottom_center' => array(),
@@ -189,7 +197,7 @@ $mods = array(
 		),
 	),
 	'header_mobile_items' => array(
-		'popup' => array( 'popup_content' => array( 'mobile-navigation' ) ),
+		'popup' => array( 'popup_content' => array( 'mobile-navigation', 'html' ) ),
 		'top'   => array( 'top_left' => array(), 'top_center' => array(), 'top_right' => array() ),
 		'main'  => array(
 			'main_left'   => array( 'mobile-logo' ),
@@ -428,7 +436,7 @@ $mods = array(
 	'page_title_layout'       => 'normal',
 
 	// WooCommerce archive
-	'product_archive_style'           => 'action-on-hover',
+	'product_archive_style'           => 'standard',
 	'product_archive_image_hover_switch' => 'none',
 	'product_archive_mobile_columns'  => 'twocolumn',
 	'product_archive_title_layout'    => 'above',
