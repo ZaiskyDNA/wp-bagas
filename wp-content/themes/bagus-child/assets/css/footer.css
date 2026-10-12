@@ -1,0 +1,100 @@
+/* ==========================================================================
+   FOOTER — 4-column widget area (top) + copyright bar (bottom)
+   ========================================================================== */
+
+/* --- Footer wrapper ------------------------------------------------------ */
+.site-footer {
+	background: var(--bagus-ink);
+	color: var(--bagus-on-dark-muted);
+	font-size: var(--bagus-fs-small);
+}
+
+/* --- Footer top (widget area) -------------------------------------------- */
+.site-footer .site-top-footer-wrap {
+	padding-block: var(--bagus-space-9) var(--bagus-space-7);
+}
+.site-footer .footer-widget-area {
+	color: var(--bagus-on-dark-muted);
+}
+
+/* Widget headings */
+.site-footer .footer-heading,
+.site-footer .widget-title {
+	font-family: var(--bagus-font-body);
+	font-size: 0.875rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--bagus-on-dark);
+	margin-bottom: var(--bagus-space-4);
+}
+
+/* Brand in footer col 1 */
+.footer-brand {
+	font-family: var(--bagus-font-heading);
+	font-size: 1.35rem;
+	font-weight: 700;
+	color: var(--bagus-on-dark) !important;
+	letter-spacing: 0.04em;
+	margin-bottom: var(--bagus-space-1);
+}
+.footer-tagline {
+	color: var(--bagus-sand) !important;
+	font-style: italic;
+	margin-bottom: var(--bagus-space-3);
+}
+
+/* Widget links */
+.site-footer .footer-links,
+.site-footer .widget_nav_menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.site-footer .footer-links li,
+.site-footer .widget_nav_menu li {
+	margin-bottom: var(--bagus-space-2);
+}
+.site-footer .footer-links a,
+.site-footer .widget_nav_menu a,
+.site-footer .footer-widget-area a {
+	color: var(--bagus-on-dark-muted);
+	text-decoration: none;
+	transition: color var(--bagus-dur) var(--bagus-ease);
+}
+.site-footer .footer-links a:hover,
+.site-footer .widget_nav_menu a:hover,
+.site-footer .footer-widget-area a:hover {
+	color: var(--bagus-sand);
+}
+
+/* Social icons */
+.footer-social .wp-block-social-link a {
+	color: var(--bagus-on-dark-muted) !important;
+}
+.footer-social .wp-block-social-link a:hover {
+	color: var(--bagus-sand) !important;
+}
+
+/* --- Footer bottom (copyright bar) --------------------------------------- */
+.site-footer .site-bottom-footer-wrap {
+	padding-block: var(--bagus-space-4);
+	font-size: 0.8125rem;
+	color: var(--bagus-on-dark-muted);
+}
+.site-footer .site-bottom-footer-wrap a {
+	color: var(--bagus-sand);
+}
+.site-footer .site-bottom-footer-wrap a:hover {
+	color: var(--bagus-sand-light);
+}
+
+/* --- Responsive: stack on mobile ----------------------------------------- */
+@media (max-width: 767px) {
+	.site-footer .site-top-footer-wrap {
+		padding-block: var(--bagus-space-7) var(--bagus-space-6);
+	}
+	.site-footer .footer-widget-area {
+		margin-bottom: var(--bagus-space-6);
+	}
+}
