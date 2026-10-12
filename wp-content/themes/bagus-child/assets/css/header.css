@@ -15,19 +15,32 @@
 	min-height: var(--bagus-header-h);
 }
 
-/* --- Logo ---------------------------------------------------------------- */
+/* --- Logo (mountain mark + BAGUS wordmark) ------------------------------- */
 .site-branding .brand {
 	display: inline-flex;
 	align-items: center;
-	gap: var(--bagus-space-2);
+	gap: 9px;
 	text-decoration: none;
+	color: var(--bagus-ink); /* currentColor untuk mark */
+}
+/* Mark gunung — mask-image agar mewarisi currentColor (adaptif ke status header) */
+.site-branding .brand::before {
+	content: "";
+	flex: 0 0 auto;
+	width: 34px;
+	height: 23px;
+	background-color: currentColor;
+	-webkit-mask: var(--bagus-logo-mark) center / contain no-repeat;
+	mask: var(--bagus-logo-mark) center / contain no-repeat;
+	transition: background-color var(--bagus-dur) var(--bagus-ease);
 }
 .site-branding .site-title {
 	font-family: var(--bagus-font-heading);
-	font-size: 1.35rem;
+	font-size: 1.4rem;
 	font-weight: 700;
-	letter-spacing: 0.04em;
+	letter-spacing: 0.02em;
 	color: var(--bagus-ink);
+	margin: 0;
 	transition: color var(--bagus-dur) var(--bagus-ease);
 }
 .site-branding .custom-logo {
@@ -36,6 +49,41 @@
 }
 /* Hide tagline */
 .site-branding .site-description { display: none; }
+
+/* --- Header account link (modul HTML: [bagus_account]) ------------------- */
+.header-account {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	font-family: var(--bagus-font-body);
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--bagus-ink);
+	padding: 8px 16px;
+	border: 1px solid var(--bagus-border-strong);
+	border-radius: var(--bagus-radius-pill);
+	background: var(--bagus-cream);
+	transition: var(--bagus-transition);
+	white-space: nowrap;
+	text-decoration: none;
+}
+.header-account:hover {
+	text-decoration: none;
+	color: var(--bagus-ink);
+	border-color: var(--bagus-sand);
+	background: var(--bagus-sand);
+}
+.header-account .bagus-ic { width: 18px; height: 18px; }
+.site-header .site-header-item { display: inline-flex; align-items: center; }
+
+/* Inline icon base (dipakai juga di konten) */
+.bagus-ic {
+	display: inline-block;
+	width: 1.25em;
+	height: 1.25em;
+	vertical-align: middle;
+	flex: 0 0 auto;
+}
 
 /* --- Transparent header (on hero pages) ---------------------------------- */
 .transparent-header .site-header {
@@ -59,27 +107,55 @@
 }
 
 /* --- Sticky header (scrolled) -------------------------------------------- */
-#masthead.item-is-fixed:not(.item-at-start) {
+.item-is-fixed:not(.item-at-start) {
 	background: var(--bagus-ink) !important;
 	box-shadow: var(--bagus-shadow-header);
 }
-#masthead.item-is-fixed:not(.item-at-start) .site-branding .site-title {
+.item-is-fixed:not(.item-at-start) .site-branding .site-title {
 	color: var(--bagus-on-dark);
 }
-#masthead.item-is-fixed:not(.item-at-start) .header-navigation .menu > li > a {
+.item-is-fixed:not(.item-at-start) .header-navigation .menu > li > a {
 	color: var(--bagus-on-dark);
 }
-#masthead.item-is-fixed:not(.item-at-start) .header-navigation .menu > li > a:hover,
-#masthead.item-is-fixed:not(.item-at-start) .header-navigation .current-menu-item > a {
+.item-is-fixed:not(.item-at-start) .header-navigation .menu > li > a:hover,
+.item-is-fixed:not(.item-at-start) .header-navigation .current-menu-item > a {
 	color: var(--bagus-sand);
 }
-#masthead.item-is-fixed:not(.item-at-start) .header-cart-button,
-#masthead.item-is-fixed:not(.item-at-start) .header-search-button {
+.item-is-fixed:not(.item-at-start) .header-cart-button,
+.item-is-fixed:not(.item-at-start) .header-search-button,
+.item-is-fixed:not(.item-at-start) .header-cart-button svg,
+.item-is-fixed:not(.item-at-start) .header-search-button svg {
+	color: var(--bagus-on-dark) !important;
+	fill: var(--bagus-on-dark) !important;
+}
+.item-is-fixed:not(.item-at-start) .header-cart-button:hover,
+.item-is-fixed:not(.item-at-start) .header-search-button:hover,
+.item-is-fixed:not(.item-at-start) .header-cart-button:hover svg,
+.item-is-fixed:not(.item-at-start) .header-search-button:hover svg {
+	color: var(--bagus-sand) !important;
+	fill: var(--bagus-sand) !important;
+}
+/* Mark gunung jadi emas di header gelap (sticky / transparent) */
+.item-is-fixed:not(.item-at-start) .site-branding .brand,
+.transparent-header .site-branding .brand {
+	color: var(--bagus-sand);
+}
+.item-is-fixed:not(.item-at-start) .site-branding .site-title,
+.transparent-header .site-branding .site-title {
 	color: var(--bagus-on-dark);
 }
-#masthead.item-is-fixed:not(.item-at-start) .header-cart-button:hover,
-#masthead.item-is-fixed:not(.item-at-start) .header-search-button:hover {
-	color: var(--bagus-sand);
+/* Account link di header gelap */
+.item-is-fixed:not(.item-at-start) .header-account,
+.transparent-header .header-account {
+	color: var(--bagus-on-dark);
+	border-color: rgba(241, 237, 228, 0.5);
+	background: transparent;
+}
+.item-is-fixed:not(.item-at-start) .header-account:hover,
+.transparent-header .header-account:hover {
+	color: var(--bagus-ink);
+	background: var(--bagus-sand);
+	border-color: var(--bagus-sand);
 }
 
 /* --- Navigation ---------------------------------------------------------- */
@@ -137,11 +213,10 @@
 /* Hide empty badge "0" */
 .header-cart-total.header-cart-is-empty-true { display: none; }
 
-/* --- Search modal override ----------------------------------------------- */
-.search-toggle-open-container {
-	background: rgba(15, 29, 34, 0.96);
-}
-.search-toggle-open-container .search-field {
+/* --- Search modal (#search-drawer) --------------------------------------- */
+/* NOTE: .search-toggle-open-container adalah pembungkus tombol toggle (±32px),
+   BUKAN modal. Jangan beri background di sini (akan jadi kotak gelap). */
+#search-drawer .search-field {
 	font-size: 1.5rem;
 	border: none;
 	border-bottom: 2px solid var(--bagus-sand);
@@ -149,7 +224,7 @@
 	color: var(--bagus-on-dark);
 	border-radius: 0;
 }
-.search-toggle-open-container .search-field::placeholder {
+#search-drawer .search-field::placeholder {
 	color: var(--bagus-on-dark-muted);
 }
 
