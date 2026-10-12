@@ -99,4 +99,7 @@ Text Domain:  bagus-child
 
 	/* --- Header -------------------------------------------------------- */
 	--bagus-header-h: 72px;
+
+	/* --- Brand mark (gunung) — dipakai sebagai mask-image agar adaptif warna */
+	--bagus-logo-mark: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2036%2024'%3E%3Cpath%20d='M0%2024%207%2011%2012%2017%2018%204%2024%2015%2029%209%2036%2024Z'/%3E%3C/svg%3E");
 }
