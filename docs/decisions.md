@@ -48,7 +48,28 @@ Format: tanggal — keputusan — alasan. Keputusan yang disetujui pemilik ditan
 | 2026-10-11 | Nomor WA hanya didefinisikan di konstanta `BAGUS_WA_NUMBER` (`mu-plugins/bagus-core.php`). `setup-ctc.php` membacanya untuk Click to Chat | Satu sumber kebenaran (PRD Bagian 3) |
 | 2026-10-11 | `DISALLOW_FILE_EDIT` aktif di lokal | Hardening ringan |
 
-## Catatan / tindak lanjut
-- **Fase 2:** separator judul `Judul — BAGUS` (saat ini `Judul – BAGUS`, PRD F-01 AC3).
-- **Fase 3:** `aria-label` tombol melayang saat ini mengikuti teks CTA ("Chat CS"). PRD F-03 AC4 meminta `aria-label="Chat WhatsApp CS BAGUS"`, jadi akan disesuaikan lewat mu-plugin.
+## Fase 3–5 (Produk, Transaksi, Konten, Blog)
+
+| Tanggal | Keputusan | Alasan |
+|---|---|---|
+| 2026-10-12 | Produk = Variable Product dengan atribut **global** `pa_durasi-sewa` (1/2/3/5 Hari). Seeder `setup-products.php` idempoten (cari by SKU, variasi dibangun ulang) | Satu atribut dipakai 15 produk; harga per durasi sesuai PRD 7.2 |
+| 2026-10-12 | **Tidak** menyetel default attribute pada produk | Agar tombol "Tambah ke Keranjang" nonaktif sampai Durasi Sewa dipilih (PRD F-04 AC2) |
+| 2026-10-12 | Gambar diimpor ke Media Library sekali saja (meta `_bagus_src`), alt text dari `IMAGE-PROMPTS.md` (helper `scripts/php/_helpers.php`) | Idempoten, alt text konsisten (PRD Rubrik 5) |
+| 2026-10-12 | Konten halaman dibangun sebagai blok `wp:html` (section kustom) + `wp:shortcode` (grid Woo), membawa class `.bagus-*` yang di-style di `assets/css/content.css` | Render front-end stabil tanpa masalah validasi blok; styling terpusat |
+| 2026-10-12 | Grid produk (Beranda "Terlaris" & Paket) dibungkus `group.bagus-wrap` | Agar shortcode `[products]`/`[product_category]` tidak melebar penuh di layout fullwidth |
+| 2026-10-12 | **Transparent header dinonaktifkan** (header solid di semua halaman; sticky ink saat scroll) | Lebih konsisten & aman untuk aksesibilitas; nav selalu terbaca di latar terang maupun hero gelap |
+| 2026-10-12 | Judul Kadence disembunyikan di halaman konten (punya H1 di hero sendiri), tetap tampil di Katalog/Keranjang/Checkout/Akun | Hindari judul ganda; Woo pages butuh heading |
+| 2026-10-12 | Checkout 2 kolom dibuat pada `form.checkout` (bukan `.woocommerce`); `#customer_details` & `#order_review` dipaksa `width:100%` karena Woo memberi ~48% | Field sewa tampil penuh di kolom kiri, ringkasan sticky di kanan |
+| 2026-10-12 | Chip filter kategori ditambah via hook `woocommerce_before_shop_loop` (child theme) | PRD F-05: filter kategori di Katalog & arsip; chip scroll horizontal di mobile |
+| 2026-10-12 | `product_archive_style` = `standard` (tombol "Pilih Opsi" selalu tampil) | `action-on-hover` menyembunyikan tombol di layar sentuh |
+| 2026-10-12 | Footer top dipaksa 2 kolom (≤767px) / 1 kolom (≤479px) via CSS | Kadence tetap memberi 4 kolom sempit di mobile |
+| 2026-10-12 | 3 artikel blog (514–545 kata) via `setup-blog.php`, kategori Destinasi/Tips, tiap artikel diakhiri CTA box ke paket terkait | PRD F-07 (min. 3 artikel 500–800 kata, AC1 CTA) |
+| 2026-10-12 | Form kontak CF7 (Nama, Email, No. WA, Pesan) via `setup-contact-form.php`; dipetakan ke Flamingo (`flamingo_subject`) | PRD F-08; pesan tersimpan walau email gagal terkirim |
+| 2026-10-12 | Data demo (`seed-demo.php`): akun `demo@bagus-outdoor.id` + 2 pesanan contoh, **terpisah** dari `setup.sh` | PRD 12.4; dijalankan manual sebelum demo, idempoten |
+
+## Catatan / tindak lanjut — RESOLVED
+- ✅ Separator judul `Judul — BAGUS` (em dash) — filter `document_title_separator` di `functions.php`.
+- ✅ `aria-label="Chat WhatsApp CS BAGUS"` pada tombol melayang Click to Chat — di-set via mu-plugin (`wp_footer`).
+- ✅ Tombol konfirmasi WA di Pesanan Diterima memuat nomor pesanan yang benar (diuji: pesanan #243).
 - Email lokal tidak terkirim (`sendmail: can't connect`). Ini sesuai PRD 10.6 (SMTP opsional) dan tidak mengganggu.
+- **Sebelum demo:** ganti `BAGUS_WA_NUMBER` (mu-plugin) ke nomor asli lalu jalankan ulang `setup-ctc.php`; ganti password admin. Lihat `docs/deployment.md`.
