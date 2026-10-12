@@ -20,6 +20,9 @@ content/images/*.jpeg
 content/images/*.webp
 content/images/originals/
 
+# Artefak uji otomatis (screenshot Playwright, dll.)
+.playwright-mcp/
+
 # Sistem / editor
 .DS_Store
 Thumbs.db
