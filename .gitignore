@@ -12,11 +12,13 @@ id_rsa*
 *.sql.gz
 backups/
 
-# Gambar sumber (PNG/JPG dari AI generator); yang di-commit hanya WebP + og-image.jpg
+# Gambar sumber dari AI generator (tidak di-commit, ± 9 MB).
+# Yang di-commit hanya hasil scripts/optimize-images.sh di content/images/optimized/.
 content/images/*.png
 content/images/*.jpg
 content/images/*.jpeg
-!content/images/og-image.jpg
+content/images/*.webp
+content/images/originals/
 
 # Sistem / editor
 .DS_Store
