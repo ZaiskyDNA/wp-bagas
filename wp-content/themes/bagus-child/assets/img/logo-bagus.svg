@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" role="img" aria-label="BAGUS" width="160" height="40">
+  <defs>
+    <style>
+      .logo-peak{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .logo-text{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:22px;fill:currentColor;letter-spacing:.04em}
+    </style>
+  </defs>
+  <!-- Mountain peaks icon -->
+  <g class="logo-peak" transform="translate(2,4)">
+    <polyline points="0,28 10,10 16,18 22,6 28,18 34,10 44,28"/>
+    <line x1="6" y1="32" x2="38" y2="32" stroke-width="1.5"/>
+  </g>
+  <!-- Wordmark -->
+  <text class="logo-text" x="54" y="29">BAGUS</text>
+</svg>

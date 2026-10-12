@@ -1,0 +1,184 @@
+/* ==========================================================================
+   HEADER — sticky, transparent, logo, nav, icons
+   Override Kadence header builder via specificity bumps.
+   ========================================================================== */
+
+/* --- Header wrapper ------------------------------------------------------ */
+.site-header {
+	transition: background var(--bagus-dur) var(--bagus-ease),
+	            box-shadow var(--bagus-dur) var(--bagus-ease);
+}
+
+/* Header height token → Kadence already applies via theme_mod,
+   but we reinforce for our transparent/sticky JS logic. */
+.site-header .site-header-row-container-inner {
+	min-height: var(--bagus-header-h);
+}
+
+/* --- Logo ---------------------------------------------------------------- */
+.site-branding .brand {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--bagus-space-2);
+	text-decoration: none;
+}
+.site-branding .site-title {
+	font-family: var(--bagus-font-heading);
+	font-size: 1.35rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: var(--bagus-ink);
+	transition: color var(--bagus-dur) var(--bagus-ease);
+}
+.site-branding .custom-logo {
+	max-height: 36px;
+	width: auto;
+}
+/* Hide tagline */
+.site-branding .site-description { display: none; }
+
+/* --- Transparent header (on hero pages) ---------------------------------- */
+.transparent-header .site-header {
+	position: absolute;
+	width: 100%;
+	z-index: 1000;
+	background: transparent !important;
+	border-bottom: none !important;
+	box-shadow: none !important;
+}
+.transparent-header .site-branding .site-title,
+.transparent-header .header-navigation .menu > li > a,
+.transparent-header .header-cart-button,
+.transparent-header .header-search-button {
+	color: var(--bagus-on-dark);
+}
+.transparent-header .header-navigation .menu > li > a:hover,
+.transparent-header .header-cart-button:hover,
+.transparent-header .header-search-button:hover {
+	color: var(--bagus-sand);
+}
+
+/* --- Sticky header (scrolled) -------------------------------------------- */
+#masthead.item-is-fixed:not(.item-at-start) {
+	background: var(--bagus-ink) !important;
+	box-shadow: var(--bagus-shadow-header);
+}
+#masthead.item-is-fixed:not(.item-at-start) .site-branding .site-title {
+	color: var(--bagus-on-dark);
+}
+#masthead.item-is-fixed:not(.item-at-start) .header-navigation .menu > li > a {
+	color: var(--bagus-on-dark);
+}
+#masthead.item-is-fixed:not(.item-at-start) .header-navigation .menu > li > a:hover,
+#masthead.item-is-fixed:not(.item-at-start) .header-navigation .current-menu-item > a {
+	color: var(--bagus-sand);
+}
+#masthead.item-is-fixed:not(.item-at-start) .header-cart-button,
+#masthead.item-is-fixed:not(.item-at-start) .header-search-button {
+	color: var(--bagus-on-dark);
+}
+#masthead.item-is-fixed:not(.item-at-start) .header-cart-button:hover,
+#masthead.item-is-fixed:not(.item-at-start) .header-search-button:hover {
+	color: var(--bagus-sand);
+}
+
+/* --- Navigation ---------------------------------------------------------- */
+.header-navigation .menu > li > a {
+	font-family: var(--bagus-font-body);
+	font-size: 0.9375rem;
+	font-weight: 500;
+	padding: var(--bagus-space-2) var(--bagus-space-3);
+	transition: color var(--bagus-dur) var(--bagus-ease);
+}
+.header-navigation .menu > li > a:hover,
+.header-navigation .current-menu-item > a {
+	color: var(--bagus-sand) !important;
+}
+
+/* Dropdown */
+.header-navigation .sub-menu {
+	background: var(--bagus-surface);
+	border: 1px solid var(--bagus-border);
+	border-radius: var(--bagus-radius-card);
+	box-shadow: var(--bagus-shadow-card);
+	padding: var(--bagus-space-2) 0;
+	min-width: 200px;
+}
+.header-navigation .sub-menu li a {
+	padding: var(--bagus-space-2) var(--bagus-space-5);
+	font-size: var(--bagus-fs-small);
+	color: var(--bagus-text);
+}
+.header-navigation .sub-menu li a:hover {
+	background: var(--bagus-cream);
+	color: var(--bagus-pine);
+}
+
+/* --- Cart badge ---------------------------------------------------------- */
+.header-cart-wrap .header-cart-total {
+	position: absolute;
+	top: -4px;
+	right: -6px;
+	min-width: 18px;
+	height: 18px;
+	line-height: 18px;
+	padding: 0 4px;
+	font-size: 11px;
+	font-weight: 700;
+	text-align: center;
+	border-radius: var(--bagus-radius-pill);
+	background: var(--bagus-sand);
+	color: var(--bagus-ink);
+}
+.header-cart-wrap .header-cart-button {
+	position: relative;
+}
+
+/* Hide empty badge "0" */
+.header-cart-total.header-cart-is-empty-true { display: none; }
+
+/* --- Search modal override ----------------------------------------------- */
+.search-toggle-open-container {
+	background: rgba(15, 29, 34, 0.96);
+}
+.search-toggle-open-container .search-field {
+	font-size: 1.5rem;
+	border: none;
+	border-bottom: 2px solid var(--bagus-sand);
+	background: transparent;
+	color: var(--bagus-on-dark);
+	border-radius: 0;
+}
+.search-toggle-open-container .search-field::placeholder {
+	color: var(--bagus-on-dark-muted);
+}
+
+/* --- Mobile off-canvas / popup ------------------------------------------- */
+.popup-drawer {
+	background: var(--bagus-ink) !important;
+}
+.popup-drawer .drawer-inner .drawer-content {
+	color: var(--bagus-on-dark);
+}
+.popup-drawer .mobile-navigation .menu li a {
+	color: var(--bagus-on-dark);
+	font-size: 1rem;
+	padding: var(--bagus-space-3) 0;
+	border-bottom: 1px solid var(--bagus-ink-3);
+}
+.popup-drawer .mobile-navigation .menu li a:hover {
+	color: var(--bagus-sand);
+}
+.popup-drawer .drawer-header .drawer-toggle {
+	color: var(--bagus-on-dark);
+}
+.popup-drawer .drawer-header .drawer-toggle:hover {
+	color: var(--bagus-sand);
+}
+
+/* --- Mobile header ------------------------------------------------------- */
+@media (max-width: 767px) {
+	.site-header .site-header-row-container-inner {
+		min-height: 64px;
+	}
+}
