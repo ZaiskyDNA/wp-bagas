@@ -1,0 +1,125 @@
+/* ==========================================================================
+   BASE — global resets, typography, links, section rhythm
+   ========================================================================== */
+
+/* --- Resets & box model -------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+	scroll-behavior: smooth;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: var(--bagus-font-body);
+	font-size: var(--bagus-fs-body);
+	line-height: var(--bagus-lh-body);
+	color: var(--bagus-text);
+	background: var(--bagus-paper);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* --- Typography ---------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6,
+.entry-title,
+.wp-block-heading {
+	font-family: var(--bagus-font-heading);
+	line-height: var(--bagus-lh-heading);
+	color: var(--bagus-ink);
+}
+
+h1, .entry-content h1 { font-size: var(--bagus-fs-h1); font-weight: 800; }
+h2, .entry-content h2 { font-size: var(--bagus-fs-h2); font-weight: 700; }
+h3, .entry-content h3 { font-size: var(--bagus-fs-h3); font-weight: 700; }
+h4, .entry-content h4 { font-size: var(--bagus-fs-h4); font-weight: 600; }
+
+p { margin-block: 0 1em; }
+strong { font-weight: 600; }
+
+/* Eyebrow: label kecil uppercase di atas heading (gaya referensi) */
+.eyebrow,
+.section-eyebrow {
+	display: block;
+	font-family: var(--bagus-font-body);
+	font-size: var(--bagus-fs-eyebrow);
+	font-weight: 600;
+	letter-spacing: var(--bagus-tracking-eyebrow);
+	text-transform: uppercase;
+	color: var(--bagus-sand);
+	margin-bottom: var(--bagus-space-3);
+}
+
+/* --- Links --------------------------------------------------------------- */
+a {
+	color: var(--bagus-sand-ink);
+	text-decoration: none;
+	transition: color var(--bagus-dur) var(--bagus-ease);
+}
+a:hover,
+a:focus-visible { color: var(--bagus-pine); }
+
+/* --- Selection ----------------------------------------------------------- */
+::selection {
+	background: var(--bagus-sand);
+	color: var(--bagus-ink);
+}
+
+/* --- Sections ------------------------------------------------------------ */
+.bagus-section {
+	padding-block: var(--bagus-section-y);
+}
+
+.bagus-section--cream { background: var(--bagus-cream); }
+.bagus-section--ink   { background: var(--bagus-ink); color: var(--bagus-on-dark); }
+.bagus-section--ink h2,
+.bagus-section--ink h3,
+.bagus-section--ink h4 { color: var(--bagus-on-dark); }
+.bagus-section--ink a { color: var(--bagus-sand); }
+.bagus-section--ink a:hover { color: var(--bagus-sand-light); }
+
+.bagus-container {
+	max-width: var(--bagus-container);
+	margin-inline: auto;
+	padding-inline: var(--bagus-gutter);
+}
+
+/* --- Separator / divider ------------------------------------------------- */
+hr,
+.wp-block-separator {
+	border: none;
+	border-top: 1px solid var(--bagus-border);
+	margin-block: var(--bagus-space-7);
+}
+
+/* --- Accessibility: visible focus ring ----------------------------------- */
+:focus-visible {
+	outline: none;
+	box-shadow: var(--bagus-focus-ring);
+}
+.bagus-section--ink :focus-visible,
+.site-footer :focus-visible {
+	box-shadow: var(--bagus-focus-ring-dark);
+}
+
+/* --- Skip link ----------------------------------------------------------- */
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: var(--bagus-space-3);
+	z-index: 100001;
+	padding: var(--bagus-space-3) var(--bagus-space-5);
+	background: var(--bagus-sand);
+	color: var(--bagus-ink);
+	font-weight: 600;
+	border-radius: var(--bagus-radius-btn);
+}
+.skip-link:focus { left: var(--bagus-space-3); }
+
+/* --- Kadence overrides: site wrapper ------------------------------------- */
+.site { overflow-x: hidden; }
