@@ -29,14 +29,26 @@
 	margin-bottom: var(--bagus-space-4);
 }
 
-/* Brand in footer col 1 */
+/* Brand in footer col 1 (mark gunung emas + wordmark) */
 .footer-brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
 	font-family: var(--bagus-font-heading);
-	font-size: 1.35rem;
+	font-size: 1.4rem;
 	font-weight: 700;
 	color: var(--bagus-on-dark) !important;
-	letter-spacing: 0.04em;
+	letter-spacing: 0.02em;
 	margin-bottom: var(--bagus-space-1);
+}
+.footer-brand::before {
+	content: "";
+	flex: 0 0 auto;
+	width: 32px;
+	height: 22px;
+	background-color: var(--bagus-sand);
+	-webkit-mask: var(--bagus-logo-mark) center / contain no-repeat;
+	mask: var(--bagus-logo-mark) center / contain no-repeat;
 }
 .footer-tagline {
 	color: var(--bagus-sand) !important;
@@ -96,5 +108,15 @@
 	}
 	.site-footer .footer-widget-area {
 		margin-bottom: var(--bagus-space-6);
+	}
+	/* Kadence tetap memberi 4 kolom di mobile → paksa 2 kolom. */
+	.site-footer .site-top-footer-inner-wrap.site-footer-row {
+		grid-template-columns: 1fr 1fr !important;
+		gap: var(--bagus-space-6) var(--bagus-space-5);
+	}
+}
+@media (max-width: 479px) {
+	.site-footer .site-top-footer-inner-wrap.site-footer-row {
+		grid-template-columns: 1fr !important;
 	}
 }
