@@ -137,6 +137,10 @@ soft woocommerce_analytics_enabled "no"
 log "Halaman inti, halaman WooCommerce (shortcode klasik), front page"
 wp eval-file "$PHP_DIR/setup-pages.php"
 
+# --- 7b. Kadence Customizer (palette, font, header builder, footer) --------
+log "Kadence theme config (palette, fonts, header, footer, buttons)"
+wp eval-file "$PHP_DIR/setup-theme.php"
+
 # --- 8. Pengiriman & pembayaran ----------------------------------------------
 log "Shipping zone Indonesia + metode bayar BACS & COD"
 wp eval-file "$PHP_DIR/setup-commerce.php"
@@ -144,6 +148,10 @@ wp eval-file "$PHP_DIR/setup-commerce.php"
 # --- 9. Menu ------------------------------------------------------------------
 log "Menu Utama & Menu Footer"
 wp eval-file "$PHP_DIR/setup-menus.php"
+
+# --- 9b. Footer widgets (4 kolom) ------------------------------------------
+log "Footer widgets (logo, jelajahi, bantuan, basecamp)"
+wp eval-file "$PHP_DIR/setup-footer-widgets.php"
 
 # --- 10. Click to Chat --------------------------------------------------------
 log "Click to Chat (nomor dari konstanta BAGUS_WA_NUMBER)"
