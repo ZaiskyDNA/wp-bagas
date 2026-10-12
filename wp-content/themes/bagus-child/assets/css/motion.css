@@ -1,0 +1,103 @@
+/* ==========================================================================
+   MOTION — fade-up scroll, hover effects, transitions, reduced-motion
+   ========================================================================== */
+
+/* === Fade-up on scroll (activated by IntersectionObserver in main.js) ==== */
+.fade-up {
+	opacity: 0;
+	transform: translateY(24px);
+	transition: opacity var(--bagus-dur-slow) var(--bagus-ease),
+	            transform var(--bagus-dur-slow) var(--bagus-ease);
+}
+.fade-up.is-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Staggered children */
+.fade-up-stagger > * {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.5s var(--bagus-ease),
+	            transform 0.5s var(--bagus-ease);
+}
+.fade-up-stagger.is-visible > *:nth-child(1) { transition-delay: 0s; }
+.fade-up-stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; }
+.fade-up-stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; }
+.fade-up-stagger.is-visible > *:nth-child(4) { transition-delay: 0.24s; }
+.fade-up-stagger.is-visible > *:nth-child(5) { transition-delay: 0.32s; }
+.fade-up-stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
+.fade-up-stagger.is-visible > * {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* === Link arrow shift on hover =========================================== */
+.link-arrow::after {
+	content: " →";
+	display: inline-block;
+	transition: transform var(--bagus-dur) var(--bagus-ease);
+}
+.link-arrow:hover::after {
+	transform: translateX(4px);
+}
+
+/* === Image zoom on hover (used by product cards, destination cards) ======= */
+.img-zoom {
+	overflow: hidden;
+	border-radius: inherit;
+}
+.img-zoom img {
+	transition: transform var(--bagus-dur-slow) var(--bagus-ease);
+}
+.img-zoom:hover img {
+	transform: scale(1.06);
+}
+
+/* === Button press effect ================================================= */
+.button:active,
+.wp-block-button__link:active,
+.woocommerce a.button:active,
+.woocommerce button.button:active {
+	transform: translateY(0) scale(0.98);
+}
+
+/* === Number counter (trust bar) animation ================================ */
+@keyframes count-up {
+	from { opacity: 0; transform: translateY(10px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+.counter-animated {
+	animation: count-up 0.6s var(--bagus-ease) both;
+}
+
+/* === PREFERS-REDUCED-MOTION ============================================== */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.fade-up,
+	.fade-up-stagger > * {
+		opacity: 1;
+		transform: none;
+	}
+
+	.img-zoom img,
+	.woocommerce ul.products li.product:hover a img,
+	.bagus-card:hover .bagus-card__img img {
+		transform: none;
+	}
+
+	.button:hover,
+	.wp-block-button__link:hover,
+	.woocommerce a.button:hover,
+	.bagus-card:hover {
+		transform: none;
+	}
+}
