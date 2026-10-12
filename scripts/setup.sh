@@ -157,7 +157,23 @@ wp eval-file "$PHP_DIR/setup-footer-widgets.php"
 log "Click to Chat (nomor dari konstanta BAGUS_WA_NUMBER)"
 wp eval-file "$PHP_DIR/setup-ctc.php"
 
-# --- 11. Selesai --------------------------------------------------------------
+# --- 11. Produk (15 variable product, atribut Durasi Sewa) -------------------
+log "Seed produk (15 produk, 6 kategori, atribut Durasi Sewa)"
+wp eval-file "$PHP_DIR/setup-products.php"
+
+# --- 12. Form kontak (Contact Form 7) ----------------------------------------
+log "Form kontak Contact Form 7 (Nama, Email, No. WA, Pesan)"
+wp eval-file "$PHP_DIR/setup-contact-form.php"
+
+# --- 13. Konten halaman final (Fase 4) ---------------------------------------
+log "Seed konten halaman (Beranda, Paket, Cara Sewa, Tentang, Kontak)"
+wp eval-file "$PHP_DIR/setup-content.php"
+
+# --- 14. Blog (3 artikel Tips & Destinasi) -----------------------------------
+log "Seed 3 artikel blog"
+wp eval-file "$PHP_DIR/setup-blog.php"
+
+# --- 15. Selesai --------------------------------------------------------------
 wp rewrite flush
 wp cache flush >/dev/null
 log "Selesai ✓  Buka $WP_URL  (admin: $WP_URL/wp-admin)"
