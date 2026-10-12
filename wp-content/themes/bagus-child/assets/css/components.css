@@ -1,0 +1,263 @@
+/* ==========================================================================
+   COMPONENTS — buttons, cards, badges, forms, breadcrumb, WA button
+   ========================================================================== */
+
+/* === BUTTONS ============================================================= */
+
+/* Primary (sand bg, ink text — pill) */
+.wp-block-button__link,
+.button,
+button[type="submit"],
+input[type="submit"],
+.woocommerce a.button,
+.woocommerce button.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--bagus-space-2);
+	font-family: var(--bagus-font-body);
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.2;
+	padding: 14px 28px;
+	border: 2px solid transparent;
+	border-radius: var(--bagus-radius-btn);
+	background: var(--bagus-sand);
+	color: var(--bagus-ink);
+	cursor: pointer;
+	text-decoration: none;
+	transition: var(--bagus-transition);
+	min-height: 48px; /* touch target */
+}
+.wp-block-button__link:hover,
+.button:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover {
+	background: var(--bagus-sand-light);
+	color: var(--bagus-ink);
+	transform: translateY(-1px);
+}
+
+/* Secondary / outline */
+.is-style-outline .wp-block-button__link,
+.button.btn-secondary,
+.woocommerce a.button.alt-outline {
+	background: transparent;
+	border-color: var(--bagus-pine);
+	color: var(--bagus-pine);
+}
+.is-style-outline .wp-block-button__link:hover,
+.button.btn-secondary:hover {
+	background: var(--bagus-pine);
+	color: var(--bagus-surface);
+	border-color: var(--bagus-pine);
+	transform: translateY(-1px);
+}
+
+/* WhatsApp button */
+.bagus-btn-wa,
+.btn-wa {
+	background: var(--bagus-wa) !important;
+	color: var(--bagus-ink) !important;
+	border-color: transparent !important;
+}
+.bagus-btn-wa:hover,
+.btn-wa:hover {
+	background: var(--bagus-wa-hover) !important;
+	color: var(--bagus-ink) !important;
+}
+
+/* Ghost / text button */
+.button.btn-ghost {
+	background: transparent;
+	border-color: transparent;
+	color: var(--bagus-sand-ink);
+	padding-inline: var(--bagus-space-3);
+}
+.button.btn-ghost:hover {
+	color: var(--bagus-pine);
+	background: transparent;
+}
+
+/* Button on dark backgrounds */
+.bagus-section--ink .button,
+.bagus-section--ink .wp-block-button__link {
+	background: var(--bagus-sand);
+	color: var(--bagus-ink);
+}
+
+/* Small button */
+.button--sm {
+	padding: 10px 20px;
+	font-size: var(--bagus-fs-small);
+	min-height: 40px;
+}
+
+/* === CARDS =============================================================== */
+.bagus-card {
+	background: var(--bagus-surface);
+	border-radius: var(--bagus-radius-card);
+	overflow: hidden;
+	box-shadow: var(--bagus-shadow-card);
+	transition: var(--bagus-transition);
+}
+.bagus-card:hover {
+	box-shadow: var(--bagus-shadow-hover);
+	transform: translateY(-4px);
+}
+
+.bagus-card__img {
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+}
+.bagus-card__img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform var(--bagus-dur-slow) var(--bagus-ease);
+}
+.bagus-card:hover .bagus-card__img img {
+	transform: scale(1.05);
+}
+
+.bagus-card__body {
+	padding: var(--bagus-space-5);
+}
+
+/* Feature card (icon + text) */
+.bagus-feature-card {
+	text-align: center;
+	padding: var(--bagus-space-6) var(--bagus-space-5);
+}
+.bagus-feature-card__icon {
+	width: 56px;
+	height: 56px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: var(--bagus-cream);
+	margin-bottom: var(--bagus-space-4);
+	color: var(--bagus-pine);
+}
+
+/* === BADGES ============================================================== */
+.badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 12px;
+	font-size: var(--bagus-fs-eyebrow);
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	border-radius: var(--bagus-radius-pill);
+	line-height: 1.4;
+}
+.badge--accent  { background: var(--bagus-sand); color: var(--bagus-ink); }
+.badge--pine    { background: var(--bagus-pine); color: var(--bagus-on-dark); }
+.badge--muted   { background: var(--bagus-cream); color: var(--bagus-muted); }
+.badge--wa      { background: var(--bagus-wa); color: var(--bagus-ink); }
+
+/* === FORMS =============================================================== */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+textarea,
+select,
+.woocommerce select,
+.woocommerce input[type="text"],
+.woocommerce input[type="email"],
+.woocommerce input[type="tel"],
+.woocommerce input[type="password"] {
+	font-family: var(--bagus-font-body);
+	font-size: 1rem;
+	line-height: 1.4;
+	height: 48px;
+	padding: 10px 16px;
+	border: 1px solid var(--bagus-border);
+	border-radius: var(--bagus-radius-input);
+	background: var(--bagus-surface);
+	color: var(--bagus-text);
+	transition: border-color var(--bagus-dur) var(--bagus-ease),
+	            box-shadow var(--bagus-dur) var(--bagus-ease);
+	width: 100%;
+}
+textarea { height: auto; min-height: 120px; }
+select { cursor: pointer; }
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+	border-color: var(--bagus-pine);
+	box-shadow: 0 0 0 3px rgba(36, 72, 62, 0.15);
+}
+
+label,
+.woocommerce form .form-row label {
+	font-size: var(--bagus-fs-small);
+	font-weight: 600;
+	color: var(--bagus-text);
+	margin-bottom: var(--bagus-space-1);
+	display: block;
+}
+
+::placeholder { color: var(--bagus-muted); }
+
+/* === BREADCRUMB ========================================================== */
+.kadence-breadcrumbs,
+.woocommerce-breadcrumb {
+	font-size: var(--bagus-fs-small);
+	color: var(--bagus-muted);
+	padding: var(--bagus-space-3) 0;
+}
+.kadence-breadcrumbs a,
+.woocommerce-breadcrumb a {
+	color: var(--bagus-muted);
+	text-decoration: none;
+}
+.kadence-breadcrumbs a:hover,
+.woocommerce-breadcrumb a:hover { color: var(--bagus-sand-ink); }
+
+/* === WA FLOATING BUTTON (Click to Chat) OVERRIDE ========================= */
+.ht_ctc_chat_style {
+	z-index: 99998 !important; /* Below WooCommerce notices (99999) */
+}
+/* Ensure it doesn't cover checkout submit on mobile */
+@media (max-width: 767px) {
+	body.woocommerce-checkout .ht_ctc_chat_style {
+		bottom: 80px !important;
+	}
+}
+
+/* === NOTICES (WooCommerce) =============================================== */
+.woocommerce-message,
+.woocommerce-info {
+	border-top-color: var(--bagus-pine) !important;
+	background: var(--bagus-cream);
+	color: var(--bagus-text);
+}
+.woocommerce-message::before {
+	color: var(--bagus-pine) !important;
+}
+.woocommerce-error {
+	border-top-color: var(--bagus-error) !important;
+}
+
+/* Toast: "Produk ditambahkan ke keranjang" */
+.woocommerce-message a.button.wc-forward {
+	background: var(--bagus-pine);
+	color: var(--bagus-surface);
+	font-size: var(--bagus-fs-small);
+	padding: 8px 20px;
+}
+.woocommerce-message a.button.wc-forward:hover {
+	background: var(--bagus-pine-dark);
+}
