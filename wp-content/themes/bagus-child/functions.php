@@ -66,3 +66,18 @@ add_action(
 );
 // Catatan: Kadence tidak memuat Google Fonts karena font di Customizer diset `google => false`
 // (lihat scripts/php/setup-theme.php).
+
+// Enqueue main.js (micro-interactions).
+add_action(
+	'wp_enqueue_scripts',
+	function () {
+		wp_enqueue_script(
+			'bagus-main',
+			BAGUS_CHILD_URI . '/assets/js/main.js',
+			array(),
+			bagus_asset_ver( 'assets/js/main.js' ),
+			true
+		);
+	},
+	20
+);
