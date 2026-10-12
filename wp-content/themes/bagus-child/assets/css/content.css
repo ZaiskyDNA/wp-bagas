@@ -1,0 +1,422 @@
+/* ==========================================================================
+   CONTENT — section components used by seeded page content
+   (hero, trust bar, feature/category/destination cards, steps, banner,
+    testimonials, CTA, package table, FAQ, about, contact)
+   Markup is core Gutenberg blocks carrying .bagus-* classes.
+   ========================================================================== */
+
+/* === Layout helpers ====================================================== */
+.bagus-wrap { max-width: var(--bagus-container); margin-inline: auto; padding-inline: var(--bagus-gutter); }
+.bagus-wrap--narrow { max-width: 760px; }
+.bagus-measure { max-width: 60ch; }
+
+/* Buttons that carry an inline icon */
+.button .bagus-ic,
+.wp-block-button__link .bagus-ic { width: 20px; height: 20px; margin-right: 2px; }
+.bagus-center { text-align: center; margin-inline: auto; }
+
+.bagus-grid { display: grid; gap: var(--bagus-space-5); }
+.bagus-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.bagus-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.bagus-grid--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1023px) {
+	.bagus-grid--4 { grid-template-columns: repeat(2, 1fr); }
+	.bagus-grid--3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+	.bagus-grid--2,
+	.bagus-grid--3,
+	.bagus-grid--4 { grid-template-columns: 1fr; }
+}
+
+.bagus-section-head { max-width: 46rem; margin: 0 auto var(--bagus-space-7); text-align: center; }
+.bagus-section-head h2 { margin: 0; letter-spacing: -0.01em; }
+.bagus-section-head p { color: var(--bagus-muted); margin-top: var(--bagus-space-3); font-size: 1.05rem; }
+.bagus-section--ink .bagus-section-head p { color: var(--bagus-on-dark-muted); }
+
+/* === HERO (home: full-screen; others: short) ============================= */
+.bagus-hero {
+	position: relative;
+	display: flex;
+	align-items: center;
+	min-height: 72vh;
+	padding: var(--bagus-space-8) 0 var(--bagus-space-9);
+	background-size: cover;
+	background-position: center;
+	color: var(--bagus-on-dark);
+	isolation: isolate;
+}
+.bagus-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: linear-gradient(180deg, rgba(15,29,34,.55) 0%, rgba(15,29,34,.35) 40%, rgba(15,29,34,.72) 100%);
+}
+.bagus-hero--sm { min-height: 42vh; padding-block: var(--bagus-space-8) var(--bagus-space-7); }
+.bagus-hero__inner { max-width: 46rem; }
+.bagus-hero h1 { color: var(--bagus-on-dark); margin: 0 0 var(--bagus-space-4); }
+.bagus-hero p.lead { font-size: clamp(1.05rem, 1rem + 0.5vw, 1.3rem); color: var(--bagus-on-dark); opacity: .95; margin-bottom: var(--bagus-space-6); max-width: 40ch; }
+.bagus-hero .eyebrow { color: var(--bagus-sand); }
+.bagus-hero .bagus-btn-row { display: flex; flex-wrap: wrap; gap: var(--bagus-space-3); }
+
+/* Hero buttons (second = outline on dark) */
+.bagus-hero .wp-block-button.is-style-outline .wp-block-button__link {
+	background: transparent;
+	border-color: var(--bagus-on-dark);
+	color: var(--bagus-on-dark);
+}
+.bagus-hero .wp-block-button.is-style-outline .wp-block-button__link:hover {
+	background: var(--bagus-on-dark);
+	color: var(--bagus-ink);
+}
+
+/* === TRUST BAR =========================================================== */
+.bagus-trust {
+	background: var(--bagus-ink-2);
+	color: var(--bagus-on-dark);
+}
+.bagus-trust .bagus-trust__grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--bagus-space-5);
+	text-align: center;
+}
+@media (max-width: 600px) { .bagus-trust .bagus-trust__grid { grid-template-columns: repeat(2, 1fr); gap: var(--bagus-space-6) var(--bagus-space-4); } }
+.bagus-stat__num {
+	font-family: var(--bagus-font-heading);
+	font-size: clamp(2rem, 1.4rem + 2.4vw, 2.85rem);
+	font-weight: 800;
+	line-height: 1;
+	color: var(--bagus-sand);
+}
+.bagus-stat__label { display: block; margin-top: var(--bagus-space-2); font-size: var(--bagus-fs-small); color: var(--bagus-on-dark-muted); }
+
+/* === FEATURE CARDS ======================================================= */
+.bagus-feature {
+	background: var(--bagus-surface);
+	border: 1px solid var(--bagus-border);
+	border-radius: var(--bagus-radius-card);
+	padding: var(--bagus-space-6) var(--bagus-space-5);
+	text-align: center;
+	height: 100%;
+	transition: var(--bagus-transition);
+}
+.bagus-feature:hover { box-shadow: var(--bagus-shadow-card); transform: translateY(-4px); border-color: transparent; }
+.bagus-feature__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 16px;
+	background: var(--bagus-cream);
+	color: var(--bagus-pine);
+	margin-bottom: var(--bagus-space-4);
+}
+.bagus-feature__icon .bagus-ic { width: 26px; height: 26px; }
+.bagus-feature:hover .bagus-feature__icon { background: var(--bagus-pine); color: var(--bagus-surface); }
+.bagus-feature h3 { font-size: var(--bagus-fs-h4); font-family: var(--bagus-font-body); font-weight: 700; margin-bottom: var(--bagus-space-2); }
+.bagus-feature p { color: var(--bagus-muted); font-size: var(--bagus-fs-small); margin: 0; }
+
+/* === CATEGORY CARDS ====================================================== */
+.bagus-cat-grid { gap: var(--bagus-space-4); }
+.bagus-cat {
+	display: flex;
+	align-items: center;
+	gap: var(--bagus-space-4);
+	padding: var(--bagus-space-5);
+	background: var(--bagus-surface);
+	border: 1px solid var(--bagus-border);
+	border-radius: var(--bagus-radius-card);
+	color: var(--bagus-text);
+	font-weight: 600;
+	transition: var(--bagus-transition);
+}
+.bagus-cat:hover { background: var(--bagus-ink); color: var(--bagus-on-dark); border-color: transparent; transform: translateY(-3px); box-shadow: var(--bagus-shadow-card); }
+.bagus-cat__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	flex: 0 0 auto;
+	border-radius: 14px;
+	background: var(--bagus-cream);
+	color: var(--bagus-pine);
+	transition: var(--bagus-transition);
+}
+.bagus-cat__icon .bagus-ic { width: 24px; height: 24px; }
+.bagus-cat:hover .bagus-cat__icon { background: var(--bagus-sand); color: var(--bagus-ink); }
+.bagus-cat__label { flex: 1 1 auto; font-size: 1.05rem; }
+.bagus-cat__go { display: inline-flex; color: var(--bagus-border-strong); transform: rotate(0deg); transition: var(--bagus-transition); }
+.bagus-cat__go .bagus-ic { width: 18px; height: 18px; }
+.bagus-cat:hover .bagus-cat__go { color: var(--bagus-sand); transform: translateX(3px); }
+
+/* === BANNER (package promo) ============================================== */
+.bagus-banner {
+	display: grid;
+	grid-template-columns: 1.1fr 0.9fr;
+	gap: 0;
+	background: var(--bagus-cream);
+	border-radius: var(--bagus-radius-lg);
+	overflow: hidden;
+	align-items: center;
+}
+.bagus-banner__body { padding: clamp(var(--bagus-space-6), 4vw, var(--bagus-space-8)); }
+.bagus-banner__body h2 { margin-bottom: var(--bagus-space-3); }
+.bagus-banner__body p { color: var(--bagus-muted); margin-bottom: var(--bagus-space-5); }
+.bagus-banner__media { align-self: stretch; }
+.bagus-banner__media img { width: 100%; height: 100%; object-fit: cover; min-height: 280px; }
+@media (max-width: 767px) {
+	.bagus-banner { grid-template-columns: 1fr; }
+	.bagus-banner__media { order: -1; }
+	.bagus-banner__media img { min-height: 220px; }
+}
+
+/* === STEPS (01 / 02 / 03) ================================================ */
+.bagus-steps { display: grid; gap: var(--bagus-space-6); }
+.bagus-step { display: grid; grid-template-columns: auto 1fr; gap: var(--bagus-space-4); align-items: start; }
+.bagus-step__num {
+	font-family: var(--bagus-font-heading);
+	font-size: 2.4rem;
+	font-weight: 800;
+	line-height: 1;
+	color: var(--bagus-sand);
+	min-width: 2.4ch;
+}
+.bagus-step h3 { font-size: var(--bagus-fs-h4); font-family: var(--bagus-font-body); margin-bottom: var(--bagus-space-1); }
+.bagus-step p { color: var(--bagus-muted); margin: 0; }
+.bagus-steps--3col { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 767px) { .bagus-steps--3col { grid-template-columns: 1fr; } }
+
+/* Step cards (home: image + number badge) */
+.bagus-stepcard {
+	background: var(--bagus-surface);
+	border: 1px solid var(--bagus-border);
+	border-radius: var(--bagus-radius-card);
+	overflow: hidden;
+	height: 100%;
+	transition: var(--bagus-transition);
+}
+.bagus-stepcard:hover { box-shadow: var(--bagus-shadow-card); transform: translateY(-4px); border-color: transparent; }
+.bagus-stepcard__media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+.bagus-stepcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--bagus-dur-slow) var(--bagus-ease); }
+.bagus-stepcard:hover .bagus-stepcard__media img { transform: scale(1.05); }
+.bagus-stepcard__num {
+	position: absolute;
+	left: var(--bagus-space-4);
+	bottom: var(--bagus-space-4);
+	font-family: var(--bagus-font-heading);
+	font-size: 1.5rem;
+	font-weight: 800;
+	line-height: 1;
+	width: 48px;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: var(--bagus-sand);
+	color: var(--bagus-ink);
+	box-shadow: 0 4px 12px rgba(15, 29, 34, .35);
+}
+.bagus-stepcard__body { padding: var(--bagus-space-5); }
+.bagus-stepcard__body h3 { font-size: var(--bagus-fs-h4); font-family: var(--bagus-font-body); margin-bottom: var(--bagus-space-2); }
+.bagus-stepcard__body p { color: var(--bagus-muted); font-size: var(--bagus-fs-small); margin: 0; }
+
+/* Panels (Cara Sewa two-column) */
+.bagus-panel {
+	background: var(--bagus-surface);
+	border: 1px solid var(--bagus-border);
+	border-radius: var(--bagus-radius-card);
+	padding: var(--bagus-space-7);
+	height: 100%;
+}
+.bagus-panel h2 { font-size: var(--bagus-fs-h3); margin-bottom: var(--bagus-space-4); }
+.bagus-panel p { color: var(--bagus-muted); }
+.bagus-checklist { list-style: none; padding: 0; margin: 0; }
+.bagus-checklist li { position: relative; padding: var(--bagus-space-2) 0 var(--bagus-space-2) var(--bagus-space-6); color: var(--bagus-text); border-bottom: 1px solid var(--bagus-border); }
+.bagus-checklist li:last-child { border-bottom: none; }
+.bagus-checklist li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+	height: 20px;
+	background: var(--bagus-pine);
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center / 15px no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center / 15px no-repeat;
+}
+
+/* === DESTINATION CARDS =================================================== */
+.bagus-dest {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	min-height: 340px;
+	border-radius: var(--bagus-radius-card);
+	overflow: hidden;
+	color: var(--bagus-on-dark);
+	isolation: isolate;
+}
+.bagus-dest img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform var(--bagus-dur-slow) var(--bagus-ease); }
+.bagus-dest::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(15,29,34,0) 30%, rgba(15,29,34,.85) 100%); }
+.bagus-dest:hover img { transform: scale(1.06); }
+.bagus-dest__body { padding: var(--bagus-space-5); }
+.bagus-dest__body h3 { color: var(--bagus-on-dark); margin: 0 0 2px; font-size: var(--bagus-fs-h4); }
+.bagus-dest__meta { font-size: var(--bagus-fs-small); color: var(--bagus-on-dark-muted); }
+
+/* === TESTIMONIALS ======================================================== */
+.bagus-quote {
+	background: var(--bagus-surface);
+	border: 1px solid var(--bagus-border);
+	border-radius: var(--bagus-radius-card);
+	padding: var(--bagus-space-6);
+	height: 100%;
+}
+.bagus-quote blockquote { margin: 0; }
+.bagus-quote p { font-size: 1.05rem; margin: 0 0 var(--bagus-space-5); color: var(--bagus-text); }
+.bagus-quote figcaption { display: flex; flex-direction: column; }
+.bagus-quote figcaption strong { font-weight: 700; color: var(--bagus-text); }
+.bagus-quote figcaption span { font-size: var(--bagus-fs-small); color: var(--bagus-muted); }
+
+/* Star rating (SVG) */
+.bagus-stars { display: inline-flex; gap: 2px; color: var(--bagus-sand); margin-bottom: var(--bagus-space-4); }
+.bagus-stars .bagus-ic { width: 18px; height: 18px; }
+
+/* === CTA (ink background) ================================================ */
+.bagus-cta {
+	position: relative;
+	text-align: center;
+	color: var(--bagus-on-dark);
+	background-size: cover;
+	background-position: center;
+	isolation: isolate;
+}
+.bagus-cta::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(15,29,34,.78); }
+.bagus-cta h2 { color: var(--bagus-on-dark); }
+.bagus-cta p { color: var(--bagus-on-dark-muted); max-width: 44ch; margin-inline: auto; }
+.bagus-cta .bagus-btn-row { display: flex; gap: var(--bagus-space-3); justify-content: center; flex-wrap: wrap; margin-top: var(--bagus-space-6); }
+
+/* === PACKAGE TABLE ======================================================= */
+.bagus-table-wrap { overflow-x: auto; }
+.bagus-table {
+	width: 100%;
+	border-collapse: collapse;
+	background: var(--bagus-surface);
+	border-radius: var(--bagus-radius-card);
+	overflow: hidden;
+	font-size: var(--bagus-fs-small);
+}
+.bagus-table th, .bagus-table td { padding: var(--bagus-space-3) var(--bagus-space-4); text-align: left; border-bottom: 1px solid var(--bagus-border); }
+.bagus-table thead th { background: var(--bagus-ink); color: var(--bagus-on-dark); font-weight: 600; }
+.bagus-table tbody tr:last-child td { border-bottom: none; }
+.bagus-table .is-save { color: var(--bagus-success); font-weight: 600; }
+
+/* === FAQ (native accordion) ============================================== */
+.bagus-faq { max-width: 44rem; margin-inline: auto; }
+.bagus-faq details {
+	background: var(--bagus-surface);
+	border: 1px solid var(--bagus-border);
+	border-radius: var(--bagus-radius-card);
+	margin-bottom: var(--bagus-space-3);
+	overflow: hidden;
+}
+.bagus-faq summary {
+	cursor: pointer;
+	list-style: none;
+	padding: var(--bagus-space-4) var(--bagus-space-5);
+	font-weight: 600;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--bagus-space-3);
+}
+.bagus-faq summary::-webkit-details-marker { display: none; }
+.bagus-faq summary::after { content: "+"; font-size: 1.4rem; color: var(--bagus-sand-ink); transition: transform var(--bagus-dur) var(--bagus-ease); }
+.bagus-faq details[open] summary::after { transform: rotate(45deg); }
+.bagus-faq details > div { padding: 0 var(--bagus-space-5) var(--bagus-space-5); color: var(--bagus-muted); }
+
+/* === ABOUT: B A G U S letters =========================================== */
+.bagus-acronym { display: flex; flex-wrap: wrap; gap: var(--bagus-space-4); justify-content: center; }
+.bagus-acronym li { list-style: none; text-align: center; max-width: 9rem; }
+.bagus-acronym b { display: block; font-family: var(--bagus-font-heading); font-size: 2.6rem; font-weight: 800; color: var(--bagus-sand-ink); }
+.bagus-acronym span { font-size: var(--bagus-fs-small); color: var(--bagus-muted); }
+
+/* === CONTACT ============================================================= */
+.bagus-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--bagus-space-7); align-items: start; }
+@media (max-width: 900px) { .bagus-contact-grid { grid-template-columns: 1fr; } }
+.bagus-info-card {
+	background: var(--bagus-surface);
+	border: 1px solid var(--bagus-border);
+	border-radius: var(--bagus-radius-card);
+	padding: var(--bagus-space-6);
+}
+.bagus-info-card ul { list-style: none; padding: 0; margin: 0 0 var(--bagus-space-5); }
+.bagus-info-card li { display: grid; grid-template-columns: 1.5rem 1fr; gap: var(--bagus-space-3); padding: var(--bagus-space-2) 0; border-bottom: 1px solid var(--bagus-border); }
+.bagus-info-card li:last-child { border-bottom: none; }
+.bagus-info-card li strong { display: block; }
+.bagus-info-card li span.ic { display: inline-flex; color: var(--bagus-pine); padding-top: 2px; }
+.bagus-info-card li span.ic .bagus-ic { width: 20px; height: 20px; }
+.bagus-map iframe { width: 100%; border: 0; border-radius: var(--bagus-radius-card); display: block; }
+
+/* === CATALOG CATEGORY FILTER CHIPS ======================================= */
+.bagus-cat-filter { margin: 0 0 var(--bagus-space-6); }
+.bagus-cat-filter ul {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--bagus-space-2);
+	padding: 0;
+	margin: 0;
+}
+@media (max-width: 767px) {
+	.bagus-cat-filter ul {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		padding-bottom: var(--bagus-space-2);
+		scrollbar-width: none;
+	}
+	.bagus-cat-filter ul::-webkit-scrollbar { display: none; }
+	.bagus-cat-filter li { flex: 0 0 auto; }
+}
+.bagus-chip {
+	display: inline-block;
+	padding: 8px 18px;
+	border-radius: var(--bagus-radius-pill);
+	border: 1px solid var(--bagus-border-strong);
+	background: var(--bagus-surface);
+	color: var(--bagus-text);
+	font-size: var(--bagus-fs-small);
+	font-weight: 600;
+	white-space: nowrap;
+	transition: var(--bagus-transition);
+}
+.bagus-chip:hover { border-color: var(--bagus-ink); color: var(--bagus-ink); }
+.bagus-chip.is-active {
+	background: var(--bagus-ink);
+	border-color: var(--bagus-ink);
+	color: var(--bagus-on-dark);
+}
+
+/* === BLOG (archive + single) ============================================= */
+.bagus-article-cta {
+	background: var(--bagus-ink);
+	color: var(--bagus-on-dark);
+	border-radius: var(--bagus-radius-lg);
+	padding: var(--bagus-space-7);
+	margin: var(--bagus-space-8) 0 var(--bagus-space-5);
+	text-align: center;
+}
+.bagus-article-cta p { margin: 0 0 var(--bagus-space-5); font-weight: 600; font-size: 1.15rem; color: var(--bagus-on-dark); }
+.bagus-article-cta .wp-block-button__link { background: var(--bagus-sand); color: var(--bagus-ink); }
+
+/* Posts archive cards (Kadence usually handles, reinforce spacing) */
+.blog .entry-title, .archive .entry-title { font-size: var(--bagus-fs-h4); }
+
+/* Section intro reduce top padding when first after hero */
+.bagus-section + .bagus-section { }
