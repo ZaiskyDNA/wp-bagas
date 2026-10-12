@@ -1,12 +1,102 @@
 /*
 Theme Name:   BAGUS Child
-Theme URI:    http://localhost:8088
-Description:  Child theme Kadence untuk BAGUS (Basecamp Alat Gunung Untuk Semua). Design tokens dan styling ada di sini; logika bisnis ada di mu-plugin bagus-core.
+Theme URI:    https://github.com/ZaiskyDNA/wp-bagas
+Description:  Child theme Kadence untuk BAGUS (Basecamp Alat Gunung Untuk Semua). Design tokens ada di file ini; styling komponen di assets/css/. Logika bisnis ada di mu-plugin bagus-core.
 Author:       BAGUS
 Template:     kadence
-Version:      0.1.0
+Version:      0.2.0
 Requires PHP: 8.1
+License:      GPL-2.0-or-later
 Text Domain:  bagus-child
 */
 
-/* Design tokens & styling lengkap ditambahkan di Fase 2. */
+/* ==========================================================================
+   DESIGN TOKENS
+   Sumber: design-references/ (editorial gelap + aksen emas) — menggantikan
+   palet hijau/oranye PRD Bagian 8. Alasan & rasio kontras: docs/decisions.md.
+   ========================================================================== */
+:root {
+	/* --- Warna inti ---------------------------------------------------- */
+	--bagus-ink:          #0F1D22; /* section gelap, header, footer         */
+	--bagus-ink-2:        #16282E; /* kartu di atas ink                     */
+	--bagus-ink-3:        #213840; /* border/garis di atas ink              */
+	--bagus-pine:         #24483E; /* sekunder, badge "Hemat"               */
+	--bagus-pine-dark:    #1A362E;
+	--bagus-sand:         #D8B573; /* KHUSUS CTA & aksen (teks ink di atasnya) */
+	--bagus-sand-light:   #E6CB94; /* hover CTA                              */
+	--bagus-sand-ink:     #7A5B22; /* teks emas di latar terang (5,37:1)     */
+	--bagus-cream:        #F1EDE4; /* section terang selang-seling           */
+	--bagus-paper:        #FAF8F3; /* latar situs                            */
+	--bagus-surface:      #FFFFFF; /* kartu, form                            */
+
+	/* --- Teks ---------------------------------------------------------- */
+	--bagus-text:         #1B2326; /* 13,67:1 di cream                       */
+	--bagus-muted:        #5E676A; /* 4,96:1 di cream                        */
+	--bagus-on-dark:      #F1EDE4; /* teks di atas ink (14,74:1)             */
+	--bagus-on-dark-muted:#A9B4B6; /* 8,11:1 di ink                          */
+
+	/* --- Garis & status ------------------------------------------------ */
+	--bagus-border:       #E2DCCF;
+	--bagus-border-strong:#C9C1B0;
+	--bagus-success:      #2E7D32;
+	--bagus-error:        #B3261E;
+	--bagus-info:         #24483E;
+	--bagus-wa:           #25D366; /* teks ink di atasnya (8,68:1)           */
+	--bagus-wa-hover:     #3BE07A;
+
+	/* --- Tipografi ----------------------------------------------------- */
+	--bagus-font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+	--bagus-font-body:    "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+	/* Skala fluid: mobile (360px) → desktop (1366px) */
+	--bagus-fs-h1:      clamp(2.25rem, 1.5rem + 3.4vw, 4rem);      /* 36 → 64 */
+	--bagus-fs-h2:      clamp(1.75rem, 1.3rem + 2vw, 2.75rem);     /* 28 → 44 */
+	--bagus-fs-h3:      clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);   /* 20 → 24 */
+	--bagus-fs-h4:      1.125rem;
+	--bagus-fs-body:    clamp(1rem, 0.96rem + 0.15vw, 1.0625rem);  /* 16 → 17 */
+	--bagus-fs-small:   0.875rem;
+	--bagus-fs-eyebrow: 0.75rem;
+	--bagus-lh-body:    1.65;
+	--bagus-lh-heading: 1.12;
+	--bagus-tracking-eyebrow: 0.22em;
+
+	/* --- Spasi (skala PRD 8.4) ----------------------------------------- */
+	--bagus-space-1: 4px;
+	--bagus-space-2: 8px;
+	--bagus-space-3: 12px;
+	--bagus-space-4: 16px;
+	--bagus-space-5: 24px;
+	--bagus-space-6: 32px;
+	--bagus-space-7: 48px;
+	--bagus-space-8: 64px;
+	--bagus-space-9: 96px;
+	--bagus-section-y: clamp(56px, 4rem + 3vw, 96px); /* 56 mobile → 96 desktop */
+	--bagus-container: 1200px;
+	--bagus-gutter: clamp(16px, 4vw, 32px);
+
+	/* --- Bentuk -------------------------------------------------------- */
+	--bagus-radius-btn:   999px; /* tombol pil seperti referensi */
+	--bagus-radius-input: 10px;
+	--bagus-radius-card:  14px;
+	--bagus-radius-lg:    22px;
+	--bagus-radius-pill:  999px;
+
+	/* --- Bayangan ------------------------------------------------------ */
+	--bagus-shadow-sm:    0 2px 8px rgba(15, 29, 34, .06);
+	--bagus-shadow-card:  0 4px 20px rgba(15, 29, 34, .07);
+	--bagus-shadow-hover: 0 14px 34px rgba(15, 29, 34, .14);
+	--bagus-shadow-header:0 6px 24px rgba(0, 0, 0, .18);
+
+	/* --- Gerak --------------------------------------------------------- */
+	--bagus-ease:     cubic-bezier(.22, .61, .36, 1);
+	--bagus-dur:      .25s;
+	--bagus-dur-slow: .6s;
+	--bagus-transition: all var(--bagus-dur) var(--bagus-ease);
+
+	/* --- Fokus (aksesibilitas) ----------------------------------------- */
+	--bagus-focus-ring: 0 0 0 3px var(--bagus-paper), 0 0 0 5px var(--bagus-pine);
+	--bagus-focus-ring-dark: 0 0 0 3px var(--bagus-ink), 0 0 0 5px var(--bagus-sand);
+
+	/* --- Header -------------------------------------------------------- */
+	--bagus-header-h: 72px;
+}
